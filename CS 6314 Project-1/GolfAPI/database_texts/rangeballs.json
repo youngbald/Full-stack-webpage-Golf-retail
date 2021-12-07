@@ -1,0 +1,49 @@
+[{
+  "title": "",
+  "quantity": "",
+  "image": "",
+  "price": "",
+  "is_deleted": false
+},
+{
+  "title": "Extra Small Bucket",
+  "quantity": "25-30",
+  "image": "xs_balls.jpg",
+  "price": "4.99",
+  "is_deleted": false
+},
+{
+  "title": "Small Bucket",
+  "quantity": "40-50",
+  "image": "s_balls.jpg",
+  "price": "9.99",
+  "is_deleted": false
+},
+{
+  "title": "Medium Bucket",
+  "quantity": "70-75",
+  "image": "m_balls.jpg",
+  "price": "15.99",
+  "is_deleted": false
+},
+{
+  "title": "Large Bucket",
+  "quantity": "100-100",
+  "image": "l_balls.jpg",
+  "price": "19.99",
+  "is_deleted": false
+},
+{
+  "title": "Extra Large Bucket",
+  "quantity": "150-200",
+  "image": "xl_balls.jpg",
+  "price": "24.99",
+  "is_deleted": false
+},
+{
+  "title": "Super Bucket",
+  "quantity": "300-400",
+  "image": "xxl_balls.jpg",
+  "price": "29.99",
+  "is_deleted": false
+}]

@@ -1,0 +1,138 @@
+<%- include ('partials/header') %>
+<script src="../javascripts/driving-range.js"></script>
+<%- include ('partials/bottom-header') %>
+<%- include ('partials/full-nav') %>
+
+<% if (user) { %>
+
+<h1 id="welcome-rangeball" for="<%= user.username %>" class="display-4">Welcome to GolfNow.com <%= user.username %></h1>
+<div class="container">
+  <div id="rangeball-search-filter-row" class="row">
+    <div id="rangeball-search-column" class="col-4">
+      <div id="rangeball-search-row" class="row">
+        <form id="rangeball-search-form" class="d-flex" action="/driving-range-search" method="get" style="max-width: 500px;">
+          <input id="search-input" class="form-control d-infline-flex" type="text" name="search" placeholder="Search...">
+          <button id="search-btn" type="submit" class="btn btn-info d-infline-flex">
+            <span class="glyphicon glyphicon-search"></span> Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Price
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <button class="dropdown-item" id="less-than-20" type="submit" formmethod="get">Less than $20</button>
+          <button class="dropdown-item" id="greater-than-20" type="submit" formmethod="get">Greater than $20</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="range-item-container" class="row range-item-row">
+    <% results.forEach(function(rangeball){ %>
+      <% if (rangeball.is_deleted == false){ %>
+        <div class="card" style="width: 18rem;">
+          <img src="../images/<%= rangeball.image %>" style="width: 200px; height: 200px;" class="card-img-top" alt="bucket picture">
+          <div class="card-body">
+            <h5 class="card-title"><%= rangeball.title %></h5>
+            <p class="card-text">$<%= rangeball.price %></p>
+            <p class="card-text">Quantity: <%= rangeball.quantity %></p>
+            <button id="<%= rangeball._id %>" type="submit" class="btn btn-primary add-to-cart-rangeball">Add To Cart</button>
+            <% if (user.is_admin == true) { %>
+            <p class="card_text">Item Id#: <%= rangeball._id %></p>
+            <button id="<%= rangeball._id %>" type="submit" class="btn btn-danger">Delete</button>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
+  <nav aria-label="Page navigation">
+    <% if (pages > 0) { %>
+      <ul class="pagination text-center">
+          <% if (current == 1) { %>
+              <li class="page-item"><a class="page-link">First</a></li>
+          <% } else { %>
+              <li class="page-item"><a class="page-link" href="/driving-range/1">First</a></li>
+          <% } %>
+          <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %>
+          <% for (; i <= (Number(current) + 3) && i <= pages; i++) { %>
+              <% if (i == current) { %>
+                  <li class="page-item"><a class="page-link"><%= i %></a></li>
+              <% } else { %>
+                  <li class="page-item"><a class="page-link" href="/driving-range/<%= i %>"><%= i %></a></li>
+              <% } %>
+          <% } %>
+          <% if (current == pages) { %>
+              <li class="page-item"><a class="page-link">Last</a></li>
+          <% } else { %>
+              <li class="page-item"><a class="page-link" href="/driving-range/<%= pages %>">Last</a></li>
+          <% } %>
+      </ul>
+    <% } %>
+  </nav>
+</div>
+<% if (user.is_admin == true) { %>
+  <div id="rangeball-form-row" class="row">
+    <div class="col">
+      <div class="update-rangeball-form-container">
+        <h2>Update Form</h2>
+        <form action="/driving-range/1" method="put" style="max-width: 500px;">
+          <div class="mb-3">
+            <label for="title" class="form-label">ID</label>
+            <input type="text" class="form-control" id="update-id" name="id">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="update-title" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="update-quantity" name="quantity">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Image</label>
+            <input type="text" class="form-control" id="update-image" name="image">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Price</label>
+            <input type="text" class="form-control" id="update-price" name="price">
+          </div>
+          <button id="update" type="submit" class="btn btn-primary">Update Item</button>
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <div class="add-rangeball-form-container">
+        <h2>Add Form</h2>
+        <form action="/driving-range" method="post" style="max-width: 500px;">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="quantity" name="quantity">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Image</label>
+            <input type="text" class="form-control" id="image" name="image">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" name="price">
+          </div>
+          <button id="add" type="submit" class="btn btn-primary">Add Item</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<% } %>
+<% } %>
+
+<%- include ('partials/footer') %>

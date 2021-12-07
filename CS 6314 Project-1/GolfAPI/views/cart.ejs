@@ -1,0 +1,40 @@
+<%- include ('partials/header') %>
+<script src="../javascripts/cart.js"></script>
+<%- include ('partials/bottom-header') %>
+<%- include ('partials/full-nav') %>
+
+<% if (user) { %>
+<h1 id="welcome-cart" for="<%= user.username %>" class="display-4"><%= user.username %>'s Shopping Cart</h1>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Type</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% results.forEach(function(cart_item){ %>
+      <tr>
+        <td class="title"><%= cart_item.title %></td>
+        <td class="type"><%= cart_item.type %></td>
+        <td class="price"><%= cart_item.price %></td>
+        <td><button id="<%= cart_item._id %>" for="<%= cart_item.product_id %>" label="<%= cart_item.stock %>" type="submit" class="btn btn-danger delete-item-in-cart">Delete</button></td>
+      </tr>
+    <% }); %>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <div class="row">
+    <div id="price-here" class="col">
+    </div>
+    <div class="col d-flex justify-content-end">
+      <button id="<%= user.username %>" type="submit" class="btn btn-primary submit-order">Submit</button>
+    </div>
+  </div>
+</div>
+<% } %>
+<%- include ('partials/footer') %>

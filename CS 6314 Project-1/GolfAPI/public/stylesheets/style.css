@@ -1,0 +1,117 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: rgba(255,255,255,.5);
+}
+
+a:hover {
+	color: rgba(255,255,255,0.75);
+  text-decoration: none !important;
+}
+
+#link-to-go-to-register {
+  color: blue;
+}
+
+#search-bar {
+  margin: 0rem;
+}
+
+#price-here {
+	padding-left: 20px;
+}
+
+#rangeball-form-row,
+#instructors-form-row,
+#rental-form-row {
+	background-color: #0C2D48;
+}
+
+#instructor-search-row {
+	padding-bottom: 1rem;
+}
+
+#instructor-search-form {
+	padding: 0;
+}
+
+#search-input {
+	margin-right: 0.5rem;
+}
+
+#rangeball-search-filter-row {
+	padding-bottom: 1rem;
+}
+
+#rangeball-search-column {
+	padding: 0;
+}
+
+#rental-search-filter-row {
+	padding-bottom: 1rem;
+}
+
+#rental-search-column {
+	padding: 0;
+}
+
+.carousel-item {
+	transition: -webkit-transform 0.5s ease;
+	transition: transform 0.5s ease;
+	transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+	-webkit-backface-visibility: visible;
+	        backface-visibility: visible;
+}
+
+.update-rangeball-form-container,
+.add-rangeball-form-container {
+	padding-left: 1rem;
+	padding-top: 1rem;
+	background-color: #B1D4E0;
+	height: 550px;
+	margin: 10px;
+}
+
+.update-instructor-form-container,
+.add-instructor-form-container,
+.update-rental-form-container,
+.add-rental-form-container {
+	padding-left: 1rem;
+	padding-top: 1rem;
+	background-color: #B1D4E0;
+	height: 700px;
+	margin: 10px;
+}
+
+.btn-primary {
+	background-color: #145DA0;
+}
+
+.btn-primary:hover {
+	background-color: #2E8BC0;
+	border-color: #2E8BC0;
+}
+
+.btn-info {
+	background-color: #B1D4E0;
+	border-color: #B1D4E0;
+}
+
+.btn-info:hover {
+	background-color: #2E8BC0;
+	border-color: #2E8BC0;
+}
+
+.jumbotron {
+	margin: 0;
+}
+
+.submit-order {
+	margin-right: 140px;
+}
+
+.pagination {
+	padding-top: 1rem;
+}

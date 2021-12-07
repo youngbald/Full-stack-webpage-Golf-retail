@@ -1,0 +1,55 @@
+[{
+	"name": "",
+	"image": "",
+	"experience": "",
+	"description": "",
+	"rate": "",
+	"availability": "",
+	"is_deleted": false
+},
+{
+	"name": "Jordan Deschambeau",
+	"image": "deschambeau.jpg",
+	"experience": "15",
+	"description": "Jordan Deschambeau is the premier short range coach of our establishment. If you need help on your wedge game, Deschambeau will set you right",
+	"rate": "50",
+	"availability": "M-W 10a-3p",
+	"is_deleted": false
+},
+{
+	"name": "Tiger McIlroy",
+	"image": "mcilroy.jpg",
+	"experience": "8",
+	"description": "Tiger McIlroy has been a member of the PGA coaching association for 5 years and is well-versed on how to extend your range using irons, woods, hybrids, and drivers.",
+	"rate": "40",
+	"availability": "Th-F 9a-5p",
+	"is_deleted": false
+},
+{
+	"name": "Phil Lee",
+	"image": "lee.jpg",
+	"experience": "3",
+	"description": "Phil Lee is the best putting coach at our establishment. If you need help on the greens, Phil is your man.",
+	"rate": "65",
+	"availability": "M-Th 9a-5p",
+	"is_deleted": false
+},
+{
+	"name": "Jack McDowell",
+	"image": "mcdowell.jpg",
+	"experience": "12",
+	"description": "Jack McDowell started playing golf in elementary school and has used his years of experience to acquire several championship wins at the Collegiate level.",
+	"rate": "55",
+	"availability": "W-F 9a-1p",
+	"is_deleted": false
+},
+{
+	"name": "Dustin Casey",
+	"image": "casey.jpg",
+	"experience": "4",
+	"description": "Dustin Casey has been coaching several students of the local high school to great success. If you need a coach for your child there is not anyone better than Dustin.",
+	"rate": "30",
+	"availability": "T-F 3p-7p",
+	"is_deleted": false
+}
+]

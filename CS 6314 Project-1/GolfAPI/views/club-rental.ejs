@@ -1,0 +1,155 @@
+<%- include ('partials/header') %>
+<script src="../javascripts/club-rental.js"></script>
+<%- include ('partials/bottom-header') %>
+<%- include ('partials/full-nav') %>
+
+<% if (user) { %>
+
+<h1 id="welcome-rental" for="<%= user.username %>" class="display-4">Welcome to GolfNow.com <%= user.username %></h1>
+<div class="container">
+  <div id="rental-search-filter-row" class="row">
+    <div id="rental-search-column" class="col-4">
+      <div id="rental-search-row" class="row">
+        <form id="rental-search-form" class="d-flex" action="/club-rental-search" method="get" style="max-width: 500px;">
+          <input id="search-input" class="form-control d-inline-flex" type="text" name="search" placeholder="Search...">
+          <button id="search-btn" type="submit" class="btn btn-info d-inline-flex">
+            <span class="glyphicon glyphicon-search"></span> Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Price
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <button class="dropdown-item" id="less-than-100" type="submit" formmethod="get">Less than $100</button>
+          <button class="dropdown-item" id="greater-than-100" type="submit" formmethod="get">Greater than $100</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% results.forEach(function(rental){ %>
+      <% if (rental.is_deleted != true){ %>
+        <div class="card" style="width: 18rem;">
+          <img src="../images/<%= rental.image %>" style="width: 200px; height: 200px;" class="card-img-top" alt="bucket picture">
+          <div class="card-body">
+            <h5 class="card-title"><%= rental.brand %> <%= rental.title %></h5>
+            <p class="card-text"><%= rental.description %></p>
+            <p class="card-text">$<%= rental.price.toFixed(2) %></p>
+            <p class="card-text">Stock: <%= rental.stock %></p>
+            <button id="<%= rental._id %>" type="submit" class="btn btn-primary add-to-cart-rental">Add To Cart</button>
+            <% if (user.is_admin == true) { %>
+            <p class="card_text">Item Id#: <%= rental._id %></p>
+            <!-- <a href="#" class="btn btn-danger">Delete</a> -->
+            <button id="<%= rental._id %>" type="submit" class="btn btn-danger">Delete</button>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+    <% }); %>
+  </div>
+  <nav aria-label="Page navigation">
+    <% if (pages > 0) { %>
+      <ul class="pagination text-center">
+          <% if (current == 1) { %>
+              <li class="page-item"><a class="page-link">First</a></li>
+          <% } else { %>
+              <li class="page-item"><a class="page-link" href="/club-rental/1">First</a></li>
+          <% } %>
+          <% var i = (Number(current) > 3 ? Number(current) - 2 : 1) %>
+          <% for (; i <= (Number(current) + 3) && i <= pages; i++) { %>
+              <% if (i == current) { %>
+                  <li class="page-item"><a class="page-link"><%= i %></a></li>
+              <% } else { %>
+                  <li class="page-item"><a class="page-link" href="/club-rental/<%= i %>"><%= i %></a></li>
+              <% } %>
+          <% } %>
+          <% if (current == pages) { %>
+              <li class="page-item"><a class="page-link">Last</a></li>
+          <% } else { %>
+              <li class="page-item"><a class="page-link" href="/club-rental/<%= pages %>">Last</a></li>
+          <% } %>
+      </ul>
+    <% } %>
+  </nav>
+</div>
+</div>
+<% if (user.is_admin == true) { %>
+  <div id="rental-form-row" class="row">
+    <div class="col">
+      <div class="update-rental-form-container">
+        <h2>Update Form</h2>
+        <form action="/club-rental/1" method="put" style="max-width: 500px;">
+          <div class="mb-3">
+            <label for="title" class="form-label">ID</label>
+            <input type="text" class="form-control" id="update-id" name="id">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="update-title" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="update-brand" name="brand">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Description</label>
+            <input type="text" class="form-control" id="update-description" name="description">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Image</label>
+            <input type="text" class="form-control" id="update-image" name="image">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Price</label>
+            <input type="text" class="form-control" id="update-price" name="price">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="update-stock" name="stock">
+          </div>
+          <button id="update" type="submit" class="btn btn-primary">Update Item</button>
+        </form>
+      </div>
+    </div>
+    <div class="col">
+      <div class="add-rental-form-container">
+        <h2>Add Form</h2>
+        <form action="/club-rental" method="post" style="max-width: 500px;">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Brand</label>
+            <input type="text" class="form-control" id="brand" name="brand">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Image</label>
+            <input type="text" class="form-control" id="image" name="image">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" name="price">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="stock" name="stock">
+          </div>
+          <button id="add" type="submit" class="btn btn-primary">Add Item</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<% } %>
+<% } %>
+
+<%- include ('partials/footer') %>

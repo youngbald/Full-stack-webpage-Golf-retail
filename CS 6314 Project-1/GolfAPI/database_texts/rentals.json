@@ -1,0 +1,54 @@
+[{
+	"brand": "",
+	"title": "",
+	"image": "",
+	"description": "",
+	"price": "",
+	"is_deleted": false
+},
+{
+	"brand": "Titleist",
+	"title": "Premium Tier",
+	"image": "titleist.jpg",
+	"description": "T300 Irons, TSi3 Driver, and SM8 wedges round out one of the best golf kits out there. Try these out to change your golf game forever.",
+	"price": "125.00",
+	"stock": "3",
+	"is_deleted": false
+},
+{
+	"brand": "Callaway",
+	"title": "Mid Tier",
+	"image": "callaway.jpg",
+	"description": "Big Bertha Driver, Apex MB Irons, and PM Grind 19 wedges are a solid set of clubs if you get past the beginner stages of golf and want to invest in something better. Try these out today!",
+	"price": "60.00",
+	"stock": "8",
+	"is_deleted": false
+},
+{
+	"brand": "Callaway",
+	"title": "Premium Tier",
+	"image": "callaway2.jpg",
+	"description": "Big Bertha Driver, Apex MB Irons, and PM Grind 19 wedges are a solid set of clubs if you get past the beginner stages of golf and want to invest in something better. Try these out today!",
+	"price": "160.00",
+	"stock": "2",
+	"is_deleted": false
+},
+{
+	"brand": "Taylormade",
+	"title": "Mid Tier",
+	"image": "taylormade.jpg",
+	"description": "Big Bertha Driver, Apex MB Irons, and PM Grind 19 wedges are a solid set of clubs if you get past the beginner stages of golf and want to invest in something better. Try these out today!",
+	"price": "55.00",
+	"stock": "12",
+	"is_deleted": false
+},
+{
+	"brand": "Ping",
+	"title": "Mid Tier",
+	"image": "ping.jpg",
+	"description": "Big Bertha Driver, Apex MB Irons, and PM Grind 19 wedges are a solid set of clubs if you get past the beginner stages of golf and want to invest in something better. Try these out today!",
+	"price": "45.00",
+	"stock": "8",
+	"is_deleted": false
+}
+]
